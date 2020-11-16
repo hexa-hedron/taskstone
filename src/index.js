@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './components/App';
+import App from './containers/App';
 import reportWebVitals from './reportWebVitals';
 
+import { createStore } from "redux";
 import { Provider } from 'react-redux';
-import createStore from './createStore';
+import rootReducer from "./reducers/App";
 
-const store = createStore();
+const store = createStore(rootReducer);
 
 ReactDOM.render(
   <Provider store={store}>
@@ -16,6 +17,9 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
+store.subscribe(() => {
+  console.log(store.getState().form)   // 動作確認のためコンソール出力
+})
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals

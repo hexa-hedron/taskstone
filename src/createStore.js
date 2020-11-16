@@ -1,11 +1,11 @@
-import { createStore as reduxCreateStore, applyMiddleware, combineReducers } from "redux";
+import { createStore } from "redux";
 import logger from "redux-logger";
-import { rootReducer } from "./reducers/App";
+import rootReducer from "./reducers/App";
 
 export default function createStore(){
     const store = reduxCreateStore(
         combineReducers({
-            todo: rootReducer,
+            root: rootReducer,
         }),
         applyMiddleware(
             logger,

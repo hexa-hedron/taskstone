@@ -22,12 +22,12 @@ const formReducer = (state = initialState.form, action) => {
         case CHANGE_TASK_NAME:
             return{
                 ...state,
-                taskName = action.taskName,
+                taskName: action.taskName,
             }
         case CHANGE_TASK_TYPE:
             return{
                 ...state,
-                taskType = action.taskType,
+                taskType: action.taskType,
             }
         case INITIALIZE_FORM:
             return initialState.form
@@ -45,6 +45,9 @@ const taskReducer = (state = initialState, action) => {
     } 
 }
 
-const rootReducer = combineReducers(formReducer, taskReducer);
+const rootReducer = combineReducers({
+    form: formReducer, 
+    task: taskReducer
+});
 
 export default rootReducer;

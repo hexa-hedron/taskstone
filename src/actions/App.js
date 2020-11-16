@@ -5,7 +5,7 @@ export const ADD_TASK = 'ADD_TASK';
 export const COMPLETE_TASK = 'COMPLETE_TASK';
 export const DELETE_TASK = 'DELETE_TASK';
 
-export const chageTaskName = (taskName) => {
+export const changeTaskName = (taskName) => {
     return{
         type: CHANGE_TASK_NAME,
         payload: { taskName }
