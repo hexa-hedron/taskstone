@@ -7,6 +7,29 @@ const ROOT_ENDPOINT = 'http://localhost:3001';
 
 const Form = ({ taskName,taskType,changeTaskName,changeTaskType,initializeForm }) => {
 
+    const addTask = e => {
+        e.preventDefault();
+        axios({
+            method:"post",
+            url:"",
+            data:{
+                taskName:taskName,
+                taskType:taskType
+            }
+            // TODO:ヘッダ情報localStorageから取得
+        })
+        .then(res => {
+            initializeForm();
+            const _users = res.data;
+            // TODO:リストに追加
+        })
+        .catch(err => {
+            console.log(err);
+            alert('登録中にエラーが発生しました')
+            // TODO:失敗時処理
+        })
+    }
+
     return (
         <div>
             <form>
@@ -23,7 +46,7 @@ const Form = ({ taskName,taskType,changeTaskName,changeTaskType,initializeForm }
                         <option value="3">毎月</option>
                     </select>
                 </label>
-                <button onClick>追加</button><br />
+                <button otype="submit">追加</button><br />
             </form>
         </div>
     )
